@@ -1,9 +1,40 @@
 const express = require('express')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+const A = require('./src/adminseg/adminseg');
+
+let allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', '*')
+  next()
+}
+
+app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }))
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(allowCrossDomain)
+app.use(cors())
+
+app.post('/adminseg/homologation', async (req, res) => {
+
+  try {
+    const data = ({
+      applicationData
+    } = req.body)
+  
+    const adminseg = new A.Adminseg(applicationData);
+    const homologationObject = await adminseg.homologationObject();
+    res.status(200).json(homologationObject);
+  } catch (error) {
+    res.status(200).json({
+      message: error.message
+    });
+  }
+  
 })
 
 app.listen(port, () => {
