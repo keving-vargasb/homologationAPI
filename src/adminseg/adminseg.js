@@ -277,7 +277,7 @@ class Adminseg {
           for (let subQuestion of question.subQuestions) {
             questions.push(subQuestion);
           }
-          continue;
+          question.subQuestions = null;
         }
   
         questions.push(question);
@@ -328,10 +328,10 @@ class Adminseg {
             choice: homologationQuestionObject.options[response[0].id],
           };
         case 'bool':
+          const userResponse = Array.isArray(response) ? response[0].id : response.id;
           return {
             question: homologationQuestionObject.id,
-            answer_bool:
-              typeof response == 'object' ? response.id : response[0].id,
+            answer_bool: userResponse
           };
         case 'text':
           return {
@@ -420,6 +420,10 @@ class Adminseg {
           return {
             question: homologationQuestionObject.id,
             answer_text: appQuestion.details ? appQuestion.details : null,
+          };
+        case 'array':
+          return {
+            question: homologationQuestionObject.id
           };
       }
     }

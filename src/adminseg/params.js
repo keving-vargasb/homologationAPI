@@ -37,7 +37,7 @@
         },
       ],
     },
-    Q_CURRENTLY_COVERAGE: {
+   /*  Q_CURRENTLY_COVERAGE: {
       questions: [
         {
           id: 492,
@@ -87,6 +87,15 @@
         {
           id: 406,
           type: 'bool',
+          option: null,
+        },
+      ],
+    },
+    Q_TREATMENT_HOSPITALIZED: {
+      questions: [
+        {
+          id: 407,
+          type: 'array',
           option: null,
         },
       ],
@@ -640,7 +649,7 @@
           options: null,
         },
       ],
-    },
+    }, */
   };
   
   const adminsegGenders = [
