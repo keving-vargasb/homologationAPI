@@ -36,7 +36,7 @@ app.post('/adminseg/homologation', async (req, res) => {
     const adminseg = new A.Adminseg(applicationData);
     const homologationObject = await adminseg.homologationObject();
 
-    res.status(200).json(response);
+    res.status(200).json(homologationObject);
   } catch (error) {
     console.log(error)
     res.status(200).json({
