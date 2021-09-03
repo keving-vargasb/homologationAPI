@@ -4,7 +4,7 @@ const env = require('../environment/env');
 const moment = require('moment');
 
 //SELECT THE ENVIRONMENT
-const environment = env.staging;
+const environment = env.staging; //TODO env var
   
 const headers = {
     apikey: environment.staging,
@@ -46,20 +46,20 @@ class Adminseg {
             first_name: names.first_name,
             last_name: names.last_name,
             gender: this.findAdminsegItem(
-              Entities.gender,
+              params.entities.gender,
               this.application.personalInfo.gender.id,
-              adminsegGenders,
+              params.adminsegGenders,
             ).value,
             height_unit: this.findAdminsegItem(
-              Entities.weightUnit,
+              params.entities.weightUnit,
               heightMeasures.size.id,
-              adminsegHeightUnits,
+              params.adminsegHeightUnits,
             ).value,
             height: heightMeasures.value,
             weight_unit: this.findAdminsegItem(
-              Entities.weightUnit,
+              params.entities.weightUnit,
               weightMeasures.size.id,
-              adminsegWeightUnits,
+              params.adminsegWeightUnits,
             ).value,
             weight: weightMeasures.value,
             addresses: [
@@ -86,9 +86,9 @@ class Adminseg {
             identifications: [
               {
                 type: this.findAdminsegItem(
-                  Entities.identityType,
+                  params.entities.identityType,
                   this.application.personalInfo.identification.type.id,
-                  adminsegIdentityTypes,
+                  params.adminsegIdentityTypes,
                 ).value,
                 number: this.application.personalInfo.identification.number,
               },
@@ -108,16 +108,16 @@ class Adminseg {
           quotation: {
             agent: agent,
             product: this.findAdminsegItem(
-              Entities.product,
+              params.entities.product,
               this.application.product ? this.application.product.id : 'p1',
-              adminsegProducts,
+              params.adminsegProducts,
             ).value,
             insured_value: parseFloat(this.application.insuredValue),
             years: this.application.selectedPlan.term.years,
             frequency: this.findAdminsegItem(
-              Entities.frequency,
+              params.entities.frequency,
               this.application.selectedPlan.frequency.id,
-              adminsegFrequencies,
+              params.adminsegFrequencies,
             ).value,
           },
           payment: {
@@ -186,9 +186,9 @@ class Adminseg {
     get adminsegBeneficiaries() {
       return this.application.beneficiaries.map((beneficiary) => {
         const personType = this.findAdminsegItem(
-          Entities.personType,
+          params.entities.personType,
           beneficiary.personType.id,
-          adminsegPersonTypes,
+          params.adminsegPersonTypes,
         ).value;
   
         return {
@@ -208,14 +208,14 @@ class Adminseg {
                 : null,
           },
           type: this.findAdminsegItem(
-            Entities.beneficiaryType,
+            params.entities.beneficiaryType,
             beneficiary.type.id,
-            adminsegbeneficiaryTypes,
+            params.adminsegbeneficiaryTypes,
           ).value,
           category: this.findAdminsegItem(
-            Entities.relationship,
+            params.entities.relationship,
             beneficiary.relationship.id,
-            adminsegRelationships,
+            params.adminsegRelationships,
           ).value,
           percentage: beneficiary.percent,
           reason: beneficiary.reason ? beneficiary.reason : null,
@@ -231,14 +231,14 @@ class Adminseg {
       return {
         name: owner.fullName,
         relationship: this.findAdminsegItem(
-          Entities.relationship,
+          params.entities.relationship,
           owner.relationship.id,
           adminsegRelationships,
         ).value,
         identity: [
           {
             type: this.findAdminsegItem(
-              Entities.identityType,
+              params.entities.identityType,
               owner.identification.type,
               adminsegIdentityTypes,
             ).value,
@@ -291,7 +291,7 @@ class Adminseg {
     }
   
     homologateQuestion(appQuestion) {
-      const homologation = homolgationQuestions[appQuestion.id];
+      const homologation = params.homolgationQuestions[appQuestion.id];
       if (!homologation) return null;
   
       let result = [];

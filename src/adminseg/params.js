@@ -1,3 +1,18 @@
+ 
+ const entities = {
+  gender: 'gender',
+  product: 'product',
+  frequency: 'frequency',
+  relationship: 'relationship',
+  phoneType: 'phone_type',
+  identityType: 'identity_type',
+  personType: 'person_type',
+  heightUnit: 'height_unit',
+  weightUnit: 'weight_unit',
+  beneficiaryType: 'beneficiary_type',
+}
+
+
  const homolgationQuestions = {
     Q_ALCOHOL_CONSUMPTION: {
       questions: [
@@ -915,6 +930,7 @@
   ];
   
   module.exports = {
+    entities,
     adminsegGenders,
     adminsegProducts,
     adminsegFrequencies,

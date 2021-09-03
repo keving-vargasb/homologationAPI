@@ -2,10 +2,15 @@ const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+
+const FormData = require('form-data');
+const env = require('./src/environment/env');
+const A = require('./src/adminseg/adminseg');
+const fetch = require('node-fetch');
+
+
 const app = express()
 const port = 3000
-
-const A = require('./src/adminseg/adminseg');
 
 let allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
@@ -19,6 +24,8 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.use(allowCrossDomain)
 app.use(cors())
 
+const environment = env.staging; //TODO env var
+
 app.post('/adminseg/homologation', async (req, res) => {
 
   try {
@@ -28,8 +35,10 @@ app.post('/adminseg/homologation', async (req, res) => {
   
     const adminseg = new A.Adminseg(applicationData);
     const homologationObject = await adminseg.homologationObject();
-    res.status(200).json(homologationObject);
+
+    res.status(200).json(response);
   } catch (error) {
+    console.log(error)
     res.status(200).json({
       message: error.message
     });
