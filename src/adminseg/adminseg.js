@@ -1,13 +1,9 @@
 const params = require('./params');
 const utils = require('../util/util');
-const env = require('../environment/env');
 const moment = require('moment');
-
-//SELECT THE ENVIRONMENT
-const environment = env.staging; //TODO env var
   
 const headers = {
-    apikey: environment.staging,
+    apikey: process.env.ADMINSEG_API_KEY,
 };
 
 class Adminseg {
@@ -459,12 +455,14 @@ class Adminseg {
     }
   
     async getAdminsegAgents() {
-      const result = await asyncGet(
-        `${environment.ADMINSEG_URL_API}/quote/services?_locale=en`,
-        headers,
-      );
+      const result = await fetch(`${process.env.ADMINSEG_URL_API}/quote/services?_locale=en`, {
+        headers: {
+          apikey: process.env.ADMINSEG_API_KEY,
+        }
+      })
+      const response = await result.json() 
   
-      return result.agents;
+      return response.agents;
     }
   
     separateOwnerCity = (city) => {

@@ -2,15 +2,17 @@ const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+require('dotenv').config()
 
-const FormData = require('form-data');
-const env = require('./src/environment/env');
-const A = require('./src/adminseg/adminseg');
-const fetch = require('node-fetch');
-
+const Adminseg = require('./src/adminseg/adminseg');
 
 const app = express()
 const port = 3000
+
+/*
+const FormData = require('form-data');
+const fetch = require('node-fetch');
+*/
 
 let allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
@@ -24,7 +26,6 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.use(allowCrossDomain)
 app.use(cors())
 
-const environment = env.staging; //TODO env var
 
 app.post('/adminseg/homologation', async (req, res) => {
 
@@ -33,7 +34,7 @@ app.post('/adminseg/homologation', async (req, res) => {
       applicationData
     } = req.body)
   
-    const adminseg = new A.Adminseg(applicationData);
+    const adminseg = new Adminseg.Adminseg(applicationData);
     const homologationObject = await adminseg.homologationObject();
 
     res.status(200).json(homologationObject);
