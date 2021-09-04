@@ -229,14 +229,14 @@ class Adminseg {
         relationship: this.findAdminsegItem(
           params.entities.relationship,
           owner.relationship.id,
-          adminsegRelationships,
+          params.adminsegRelationships,
         ).value,
         identity: [
           {
             type: this.findAdminsegItem(
               params.entities.identityType,
               owner.identification.type,
-              adminsegIdentityTypes,
+              params.adminsegIdentityTypes,
             ).value,
             number: owner.identification.number,
           },
@@ -277,7 +277,8 @@ class Adminseg {
           for (let subQuestion of question.subQuestions) {
             questions.push(subQuestion);
           }
-          question.subQuestions = null;
+          continue;
+          //question.subQuestions = null;
         }
   
         questions.push(question);
@@ -316,19 +317,19 @@ class Adminseg {
       appQuestion,
     ) {
       const response = appQuestion.response;
+      const userResponse = Array.isArray(response) ? response[0].id : response.id;
       switch (homologationQuestionObject.type) {
         case 'radio':
           return {
             question: homologationQuestionObject.id,
-            choice: homologationQuestionObject.options[response[0].id],
+            choice: homologationQuestionObject.options[userResponse],
           };
         case 'select':
           return {
             question: homologationQuestionObject.id,
-            choice: homologationQuestionObject.options[response[0].id],
+            choice: homologationQuestionObject.options[userResponse],
           };
         case 'bool':
-          const userResponse = Array.isArray(response) ? response[0].id : response.id;
           return {
             question: homologationQuestionObject.id,
             answer_bool: userResponse
@@ -341,7 +342,7 @@ class Adminseg {
         case 'age':
           return {
             question: homologationQuestionObject.id,
-            answer_age: parseInt(response[0].value),
+            answer_age: parseInt(response),
           };
         case 'checkbox':
           return {
@@ -424,6 +425,11 @@ class Adminseg {
         case 'array':
           return {
             question: homologationQuestionObject.id
+          };
+        case 'surgery_text':
+          return {
+            question: homologationQuestionObject.id,
+            answer_text: appQuestion.detail ? appQuestion.detail[0].Details : null,
           };
       }
     }

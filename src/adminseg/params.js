@@ -37,7 +37,7 @@
         },
       ],
     },
-   /*  Q_CURRENTLY_COVERAGE: {
+    Q_CURRENTLY_COVERAGE: {
       questions: [
         {
           id: 492,
@@ -91,7 +91,7 @@
         },
       ],
     },
-    Q_TREATMENT_HOSPITALIZED: {
+   /*  Q_TREATMENT_HOSPITALIZED: {
       questions: [
         {
           id: 407,
@@ -99,7 +99,7 @@
           option: null,
         },
       ],
-    },
+    }, */
     Q_TREATMENT_HOSPITALIZED_1: {
       questions: [
         {
@@ -512,6 +512,11 @@
           type: 'bool',
           options: null,
         },
+        {
+          id: 482,
+          type: 'surgery_text',
+          options: null,
+        },
       ],
     },
     Q_ABNORMAL_RESULTS_SURGERIES: {
@@ -526,7 +531,7 @@
     Q_ANY_TREATMENT: {
       questions: [
         {
-          id: 419,
+          id: 458,
           type: 'radio',
           options: {
             0: 0,
@@ -649,7 +654,7 @@
           options: null,
         },
       ],
-    }, */
+    },
   };
   
   const adminsegGenders = [
