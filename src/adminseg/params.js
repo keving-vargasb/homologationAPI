@@ -14,7 +14,7 @@
 
 
  const homolgationQuestions = {
-    Q_ALCOHOL_CONSUMPTION: {
+   Q_ALCOHOL_CONSUMPTION: {
       questions: [
         {
           id: 484,
@@ -91,7 +91,7 @@
         },
       ],
     },
-   /*  Q_TREATMENT_HOSPITALIZED: {
+   Q_TREATMENT_HOSPITALIZED: {
       questions: [
         {
           id: 407,
@@ -99,7 +99,7 @@
           option: null,
         },
       ],
-    }, */
+    },
     Q_TREATMENT_HOSPITALIZED_1: {
       questions: [
         {
@@ -204,6 +204,15 @@
         {
           id: 418,
           type: 'bool',
+          option: null,
+        },
+      ],
+    },
+    Q_SOME_DISEASE: {
+      questions: [
+        {
+          id: 428,
+          type: 'array',
           option: null,
         },
       ],
@@ -514,7 +523,7 @@
         },
         {
           id: 482,
-          type: 'surgery_text',
+          type: 'detail_text',
           options: null,
         },
       ],
@@ -524,6 +533,11 @@
         {
           id: 419,
           type: 'bool',
+          options: null,
+        },
+        {
+          id: 457,
+          type: 'detail_text',
           options: null,
         },
       ],
@@ -570,6 +584,11 @@
           type: 'bool',
           options: null,
         },
+        {
+          id: 453,
+          type: 'detail_text',
+          options: null,
+        },
       ],
     },
     Q_SOME_DISEASE_PAST_DAYS: {
@@ -577,6 +596,11 @@
         {
           id: 506,
           type: 'bool',
+          options: null,
+        },
+        {
+          id: 508,
+          type: 'detail_text',
           options: null,
         },
       ],
@@ -614,6 +638,11 @@
         {
           id: 504,
           type: 'bool',
+          options: null,
+        },
+        {
+          id: 498,
+          type: 'detail_text',
           options: null,
         },
       ],

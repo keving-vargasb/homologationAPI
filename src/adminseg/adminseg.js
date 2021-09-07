@@ -1,7 +1,8 @@
 const params = require('./params');
 const utils = require('../util/util');
 const moment = require('moment');
-  
+const fetch = require('node-fetch');
+
 const headers = {
     apikey: process.env.ADMINSEG_API_KEY,
 };
@@ -264,9 +265,17 @@ class Adminseg {
         homologation = newArray;
       }
   
-      return homologation.filter(
+      const questionWithoutUndefined = homologation.filter(
         (question) => question !== undefined && question,
       );
+
+      questionWithoutUndefined.push({
+        question: 439,
+      });
+
+      console.log(questionWithoutUndefined);
+
+      return questionWithoutUndefined;
     }
   
     organizeQuestions() {
@@ -277,13 +286,12 @@ class Adminseg {
           for (let subQuestion of question.subQuestions) {
             questions.push(subQuestion);
           }
-          continue;
-          //question.subQuestions = null;
+          question.subQuestions = null;
         }
   
         questions.push(question);
       }
-  
+
       return questions;
     }
   
@@ -317,7 +325,12 @@ class Adminseg {
       appQuestion,
     ) {
       const response = appQuestion.response;
-      const userResponse = Array.isArray(response) ? response[0].id : response.id;
+      let userResponse = null;
+      
+      if(response) {
+        userResponse = Array.isArray(response) ? response[0].id : response.id;
+      }
+
       switch (homologationQuestionObject.type) {
         case 'radio':
           return {
@@ -426,7 +439,7 @@ class Adminseg {
           return {
             question: homologationQuestionObject.id
           };
-        case 'surgery_text':
+        case 'detail_text':
           return {
             question: homologationQuestionObject.id,
             answer_text: appQuestion.detail ? appQuestion.detail[0].Details : null,
