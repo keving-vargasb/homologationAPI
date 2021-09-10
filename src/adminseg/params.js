@@ -17,7 +17,7 @@
    Q_ALCOHOL_CONSUMPTION: {
       questions: [
         {
-          id: 484,
+          id: 509,
           type: 'radio',
           options: {
             0: 0,
@@ -484,7 +484,7 @@
       questions: [
         {
           id: 451,
-          type: 'radio',
+          type: 'checkbox',
           options: {
             0: 0,
             1: 1,
@@ -499,7 +499,7 @@
     Q_HAVE_FOLLOWING_CONDITIONS: {
       questions: [
         {
-          id: 455,
+          id: 510,
           type: 'bool',
           options: null,
         },
@@ -641,7 +641,7 @@
           options: null,
         },
         {
-          id: 498,
+          id: 504,
           type: 'detail_text',
           options: null,
         },

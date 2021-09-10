@@ -273,8 +273,6 @@ class Adminseg {
         question: 439,
       });
 
-      console.log(questionWithoutUndefined);
-
       return questionWithoutUndefined;
     }
   

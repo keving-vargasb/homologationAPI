@@ -1,4 +1,4 @@
-var FormData = require('form-data');
+const FormData = require('form-data');
 
 function buildFormData(formData, data, parentKey) {
     if (

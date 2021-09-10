@@ -30,15 +30,20 @@ app.post('/adminseg/homologation', async (req, res) => {
     const adminseg = new Adminseg.Adminseg(req.body.applicationData);
     const homologationObject = await adminseg.homologationObject();
 
+    const quotationRequestCopy = JSON.stringify(homologationObject.quotationRequest);
+
     const quotationResult = await fetch(`${process.env.ADMINSEG_URL_API}/quote/results`, {
-      method: 'post',
+      method: 'POST',
       body: homologationObject.quotationRequest,
       headers: {
         apikey: process.env.ADMINSEG_API_KEY,
       }
     })
-    const quotationResponse = await quotationResult.json() 
-    console.log({quotationResponse});
+    const quotationResponse = await quotationResult.json()
+
+    homologationObject.submitRequest.append('quotation[uuid]', quotationResponse.quote.uuid);
+
+    const submitRequestCopy = JSON.stringify(homologationObject.submitRequest);
 
     const submitResult = await fetch(`${process.env.ADMINSEG_URL_API}/application/submit`, {
       method: 'post',
@@ -48,11 +53,12 @@ app.post('/adminseg/homologation', async (req, res) => {
       }
     })
     const submitResponse = await submitResult.json() 
-    console.log({submitResponse}); 
-    
-    //quotationResponse.quote.uuid
+    console.log({submitResponse});
 
-    res.status(200).json(submitResponse);
+    homologationObject.quotationRequest = JSON.parse(quotationRequestCopy);
+    homologationObject.submitRequest = JSON.parse(submitRequestCopy);
+
+    res.status(200).json(homologationObject);
   } catch (error) {
     console.log(error)
     res.status(200).json({
