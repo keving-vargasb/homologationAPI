@@ -41,7 +41,7 @@ app.post('/adminseg/homologation', async (req, res) => {
     })
     const quotationResponse = await quotationResult.json()
 
-    homologationObject.submitRequest.append('quotation[uuid]', quotationResponse.quote.uuid);
+    homologationObject.submitRequest.append('application[quotation][uuid]', quotationResponse.quote.uuid);
 
     const submitRequestCopy = JSON.stringify(homologationObject.submitRequest);
 
@@ -59,6 +59,11 @@ app.post('/adminseg/homologation', async (req, res) => {
     homologationObject.submitRequest = JSON.parse(submitRequestCopy);
 
     res.status(200).json(homologationObject);
+
+    /* res.status(200).json({
+      length: homologationObject.application.answers.length,
+      answers: homologationObject.application.answers
+    }); */
   } catch (error) {
     console.log(error)
     res.status(200).json({

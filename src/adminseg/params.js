@@ -13,678 +13,737 @@
 }
 
 
- const homolgationQuestions = {
-   Q_ALCOHOL_CONSUMPTION: {
-      questions: [
-        {
-          id: 509,
-          type: 'radio',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-            3: 3,
-          },
+ const homolgationQuestions = [
+   {
+    id: 'Q_ALCOHOL_CONSUMPTION',
+    questions: [
+      {
+        id: 509,
+        type: 'radio',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
         },
-      ],
-    },
-    Q_MEMBER_FOLLOWING_POSITION: {
-      questions: [
-        {
-          id: 404,
-          type: 'bool',
-          options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_MEMBER_FOLLOWING_POSITION',
+     questions: [
+      {
+        id: 404,
+        type: 'bool',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_CURRENTLY_COVERAGE',
+     questions: [
+      {
+        id: 492,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 491,
+        type: 'insurances',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_INSURANCE_POLICY_DENIED',
+     questions: [
+      {
+        id: 478,
+        type: 'bool',
+        option: null,
+      },
+      {
+        id: 479,
+        type: 'insurance_denied_type',
+        option: {
+          0: 0,
+          1: 1,
         },
-      ],
-    },
-    Q_CURRENTLY_COVERAGE: {
-      questions: [
-        {
-          id: 492,
-          type: 'bool',
-          options: null,
+      },
+      {
+        id: 487,
+        type: 'insurance_denied_text',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_EXTREME_ACTIVITIES',
+     questions: [
+      {
+        id: 499,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_DRUGS',
+     questions: [
+      {
+        id: 406,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED',
+     questions: [
+      {
+        id: 407,
+        type: 'array',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_1',
+     questions: [
+      {
+        id: 408,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_2',
+     questions: [
+      {
+        id: 409,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_3',
+     questions: [
+      {
+        id: 410,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_4',
+     questions: [
+      {
+        id: 411,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_5',
+     questions: [
+      {
+        id: 412,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_6',
+     questions: [
+      {
+        id: 413,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_7',
+     questions: [
+      {
+        id: 414,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_8',
+     questions: [
+      {
+        id: 415,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_9',
+     questions: [
+      {
+        id: 481,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_10',
+     questions: [
+      {
+        id: 416,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_11',
+     questions: [
+      {
+        id: 417,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TREATMENT_HOSPITALIZED_12',
+     questions: [
+      {
+        id: 418,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE',
+     questions: [
+      {
+        id: 428,
+        type: 'array',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_1',
+     questions: [
+      {
+        id: 429,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_2',
+     questions: [
+      {
+        id: 430,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_3',
+     questions: [
+      {
+        id: 431,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_4',
+     questions: [
+      {
+        id: 432,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_5',
+     questions: [
+      {
+        id: 433,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_6',
+     questions: [
+      {
+        id: 434,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_7',
+     questions: [
+      {
+        id: 435,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_8',
+     questions: [
+      {
+        id: 436,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_9',
+     questions: [
+      {
+        id: 437,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_10',
+     questions: [
+      {
+        id: 438,
+        type: 'bool',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_BLOOD_PRESSURE_MULTIPLE_1',
+     questions: [
+      {
+        id: 440,
+        type: 'age',
+        option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_BLOOD_PRESSURE_MULTIPLE_2',
+     questions: [
+      {
+        id: 441,
+        type: 'select',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
+          4: 4,
         },
-        {
-          id: 491,
-          type: 'insurances',
-          options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_BLOOD_PRESSURE_MULTIPLE_3',
+     questions: [
+      {
+        id: 442,
+        type: 'select',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
+          4: 4,
         },
-      ],
-    },
-    Q_INSURANCE_POLICY_DENIED: {
-      questions: [
-        {
-          id: 478,
-          type: 'bool',
-          option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_ABNORMAL_RESULTS',
+     questions: [
+      {
+        id: 443,
+        type: 'checkbox',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
+          4: 4,
+          5: 5,
         },
-        {
-          id: 479,
-          type: 'insurance_denied_type',
-          option: {
-            0: 0,
-            1: 1,
-          },
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_FAMILY_DIED_FROM_DISEASE',
+     questions: [
+      {
+        id: 480,
+        type: 'bool',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_HIGH_CHOLESTEROL_MULTIPLE_1',
+     questions: [
+      {
+        id: 460,
+        type: 'age',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_HIGH_CHOLESTEROL_MULTIPLE_2',
+     questions: [
+      {
+        id: 461,
+        type: 'select',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
+          4: 4,
         },
-        {
-          id: 487,
-          type: 'insurance_denied_text',
-          option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_HIGH_CHOLESTEROL_MULTIPLE_3',
+     questions: [
+      {
+        id: 462,
+        type: 'radio',
+        options: {
+          0: 0,
+          1: 1,
         },
-      ],
-    },
-    Q_EXTREME_ACTIVITIES: {
-      questions: [
-        {
-          id: 499,
-          type: 'bool',
-          option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_HIGH_CHOLESTEROL_MULTIPLE_4',
+     questions: [
+      {
+        id: 488,
+        type: 'select',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
+          4: 4,
         },
-      ],
-    },
-    Q_DRUGS: {
-      questions: [
-        {
-          id: 406,
-          type: 'bool',
-          option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_HIGH_CHOLESTEROL_MULTIPLE_5',
+     questions: [
+      {
+        id: 489,
+        type: 'radio',
+        options: {
+          0: 0,
+          1: 1,
         },
-      ],
-    },
-   Q_TREATMENT_HOSPITALIZED: {
-      questions: [
-        {
-          id: 407,
-          type: 'array',
-          option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TAKE_INSULIN',
+     questions: [
+      {
+        id: 447,
+        type: 'bool',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_DIABETES_MULTIPLE_1',
+     questions: [
+      {
+        id: 448,
+        type: 'age',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_DIABETES_MULTIPLE_2',
+     questions: [
+      {
+        id: 497,
+        type: 'select',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
+          4: 4,
         },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_1: {
-      questions: [
-        {
-          id: 408,
-          type: 'bool',
-          option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_DIABETES_MULTIPLE_3',
+     questions: [
+      {
+        id: 450,
+        type: 'select',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
         },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_2: {
-      questions: [
-        {
-          id: 409,
-          type: 'bool',
-          option: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_COMPLICATIONS_DIABETES',
+     questions: [
+      {
+        id: 451,
+        type: 'checkbox',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
+          4: 4,
+          5: 5,
         },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_3: {
-      questions: [
-        {
-          id: 410,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_4: {
-      questions: [
-        {
-          id: 411,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_5: {
-      questions: [
-        {
-          id: 412,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_6: {
-      questions: [
-        {
-          id: 413,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_7: {
-      questions: [
-        {
-          id: 414,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_8: {
-      questions: [
-        {
-          id: 415,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_9: {
-      questions: [
-        {
-          id: 481,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_10: {
-      questions: [
-        {
-          id: 416,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_11: {
-      questions: [
-        {
-          id: 417,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_TREATMENT_HOSPITALIZED_12: {
-      questions: [
-        {
-          id: 418,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE: {
-      questions: [
-        {
-          id: 428,
-          type: 'array',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_1: {
-      questions: [
-        {
-          id: 429,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_2: {
-      questions: [
-        {
-          id: 430,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_3: {
-      questions: [
-        {
-          id: 431,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_4: {
-      questions: [
-        {
-          id: 432,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_5: {
-      questions: [
-        {
-          id: 433,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_6: {
-      questions: [
-        {
-          id: 434,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_7: {
-      questions: [
-        {
-          id: 435,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_8: {
-      questions: [
-        {
-          id: 436,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_9: {
-      questions: [
-        {
-          id: 437,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_10: {
-      questions: [
-        {
-          id: 438,
-          type: 'bool',
-          option: null,
-        },
-      ],
-    },
-    Q_BLOOD_PRESSURE_MULTIPLE_1: {
-      questions: [
-        {
-          id: 440,
-          type: 'age',
-          option: null,
-        },
-      ],
-    },
-    Q_BLOOD_PRESSURE_MULTIPLE_2: {
-      questions: [
-        {
-          id: 441,
-          type: 'select',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-          },
-        },
-      ],
-    },
-    Q_BLOOD_PRESSURE_MULTIPLE_3: {
-      questions: [
-        {
-          id: 442,
-          type: 'select',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-          },
-        },
-      ],
-    },
-    Q_ABNORMAL_RESULTS: {
-      questions: [
-        {
-          id: 443,
-          type: 'checkbox',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-            5: 5,
-          },
-        },
-      ],
-    },
-    Q_SOME_FAMILY_DIED_FROM_DISEASE: {
-      questions: [
-        {
-          id: 480,
-          type: 'bool',
-          options: null,
-        },
-      ],
-    },
-    Q_HIGH_CHOLESTEROL_MULTIPLE_1: {
-      questions: [
-        {
-          id: 460,
-          type: 'age',
-          options: null,
-        },
-      ],
-    },
-    Q_HIGH_CHOLESTEROL_MULTIPLE_2: {
-      questions: [
-        {
-          id: 461,
-          type: 'select',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-          },
-        },
-      ],
-    },
-    Q_HIGH_CHOLESTEROL_MULTIPLE_3: {
-      questions: [
-        {
-          id: 462,
-          type: 'radio',
-          options: {
-            0: 0,
-            1: 1,
-          },
-        },
-      ],
-    },
-    Q_HIGH_CHOLESTEROL_MULTIPLE_4: {
-      questions: [
-        {
-          id: 488,
-          type: 'select',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-          },
-        },
-      ],
-    },
-    Q_HIGH_CHOLESTEROL_MULTIPLE_5: {
-      questions: [
-        {
-          id: 489,
-          type: 'radio',
-          options: {
-            0: 0,
-            1: 1,
-          },
-        },
-      ],
-    },
-    Q_TAKE_INSULIN: {
-      questions: [
-        {
-          id: 447,
-          type: 'bool',
-          options: null,
-        },
-      ],
-    },
-    Q_DIABETES_MULTIPLE_1: {
-      questions: [
-        {
-          id: 448,
-          type: 'age',
-          options: null,
-        },
-      ],
-    },
-    Q_DIABETES_MULTIPLE_2: {
-      questions: [
-        {
-          id: 497,
-          type: 'select',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-          },
-        },
-      ],
-    },
-    Q_DIABETES_MULTIPLE_3: {
-      questions: [
-        {
-          id: 450,
-          type: 'select',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-          },
-        },
-      ],
-    },
-    Q_COMPLICATIONS_DIABETES: {
-      questions: [
-        {
-          id: 451,
-          type: 'checkbox',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-            5: 5,
-          },
-        },
-      ],
-    },
-    Q_HAVE_FOLLOWING_CONDITIONS: {
-      questions: [
+      },
+    ],
+   },
+   {
+     id: 'Q_HAVE_FOLLOWING_CONDITIONS',
+     questions: [
         {
           id: 510,
           type: 'bool',
           options: null,
         },
       ],
-    },
-    Q_CURRENTLY_DISABLED: {
-      questions: [
-        {
-          id: 490,
-          type: 'bool',
-          options: null,
+   },
+   {
+     id: 'Q_CURRENTLY_DISABLED',
+     questions: [
+      {
+        id: 490,
+        type: 'bool',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_PENDING_SURGERY',
+     questions: [
+      {
+        id: 483,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 482,
+        type: 'detail_text',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_ABNORMAL_RESULTS_SURGERIES',
+     questions: [
+      {
+        id: 419,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 457,
+        type: 'detail_text',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_ANY_TREATMENT',
+     questions: [
+      {
+        id: 458,
+        type: 'radio',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
         },
-      ],
-    },
-    Q_PENDING_SURGERY: {
-      questions: [
-        {
-          id: 483,
-          type: 'bool',
-          options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_RESULTS_TREATMENT',
+     questions: [
+      {
+        id: 459,
+        type: 'radio',
+        options: {
+          0: 0,
+          1: 1,
+          2: 2,
         },
-        {
-          id: 482,
-          type: 'detail_text',
-          options: null,
-        },
-      ],
-    },
-    Q_ABNORMAL_RESULTS_SURGERIES: {
-      questions: [
-        {
-          id: 419,
-          type: 'bool',
-          options: null,
-        },
-        {
-          id: 457,
-          type: 'detail_text',
-          options: null,
-        },
-      ],
-    },
-    Q_ANY_TREATMENT: {
-      questions: [
-        {
-          id: 458,
-          type: 'radio',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-          },
-        },
-      ],
-    },
-    Q_RESULTS_TREATMENT: {
-      questions: [
-        {
-          id: 459,
-          type: 'radio',
-          options: {
-            0: 0,
-            1: 1,
-            2: 2,
-          },
-        },
-      ],
-    },
-    Q_HEALTHCARE_PROVIDER: {
-      questions: [
-        {
-          id: 486,
-          type: 'doctor',
-          options: null,
-        },
-      ],
-    },
-    Q_ADMITTED_HOSPITAL: {
-      questions: [
-        {
-          id: 420,
-          type: 'bool',
-          options: null,
-        },
-        {
-          id: 453,
-          type: 'detail_text',
-          options: null,
-        },
-      ],
-    },
-    Q_SOME_DISEASE_PAST_DAYS: {
-      questions: [
-        {
-          id: 506,
-          type: 'bool',
-          options: null,
-        },
-        {
-          id: 508,
-          type: 'detail_text',
-          options: null,
-        },
-      ],
-    },
-    Q_POSITIVE_RESULT_COVID_TEST: {
-      questions: [
-        {
-          id: 500,
-          type: 'bool',
-          options: null,
-        },
-        {
-          id: 501,
-          type: 'covid-date',
-          options: null,
-        },
-        {
-          id: 502,
-          type: 'covid-bool',
-          options: null,
-        },
-      ],
-    },
-    Q_AWAITING_RESULT_COVID_TEST: {
-      questions: [
-        {
-          id: 503,
-          type: 'bool',
-          options: null,
-        },
-      ],
-    },
-    HAVE_CONTACT_SOMEONE_COVID_CONTAGED: {
-      questions: [
-        {
-          id: 504,
-          type: 'bool',
-          options: null,
-        },
-        {
-          id: 504,
-          type: 'detail_text',
-          options: null,
-        },
-      ],
-    },
-    Q_TRAVELED_PAST_DAYS: {
-      questions: [
-        {
-          id: 505,
-          type: 'bool',
-          options: null,
-        },
-        {
-          id: 507,
-          type: 'traveled_text',
-          options: null,
-        },
-      ],
-    },
-    Q_TAKE_MEDICATION: {
-      questions: [
-        {
-          id: 427,
-          type: 'bool',
-          options: null,
-        },
-        {
-          id: 425,
-          type: 'medicine',
-          options: null,
-        },
-      ],
-    },
-    Q_DOSAGE_CHANGED: {
-      questions: [
-        {
-          id: 485,
-          type: 'bool',
-          options: null,
-        },
-      ],
-    },
-  };
+      },
+    ],
+   },
+   {
+     id: 'Q_HEALTHCARE_PROVIDER',
+     questions: [
+      {
+        id: 486,
+        type: 'doctor',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_ADMITTED_HOSPITAL',
+     questions: [
+      {
+        id: 420,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 453,
+        type: 'detail_text',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_SOME_DISEASE_PAST_DAYS',
+     questions: [
+      {
+        id: 506,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 508,
+        type: 'detail_text',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_POSITIVE_RESULT_COVID_TEST',
+     questions: [
+      {
+        id: 500,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 501,
+        type: 'covid-date',
+        options: null,
+      },
+      {
+        id: 502,
+        type: 'covid-bool',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_AWAITING_RESULT_COVID_TEST',
+     questions: [
+      {
+        id: 503,
+        type: 'bool',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'HAVE_CONTACT_SOMEONE_COVID_CONTAGED',
+     questions: [
+      {
+        id: 504,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 504,
+        type: 'detail_text',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TRAVELED_PAST_DAYS',
+     questions: [
+      {
+        id: 505,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 507,
+        type: 'traveled_text',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_TAKE_MEDICATION',
+     questions: [
+      {
+        id: 427,
+        type: 'bool',
+        options: null,
+      },
+      {
+        id: 425,
+        type: 'medicine',
+        options: null,
+      },
+    ],
+   },
+   {
+     id: 'Q_DOSAGE_CHANGED',
+     questions: [
+      {
+        id: 485,
+        type: 'bool',
+        options: null,
+      },
+    ],
+   }];
   
   const adminsegGenders = [
     {

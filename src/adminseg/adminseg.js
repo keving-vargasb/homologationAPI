@@ -39,6 +39,9 @@ class Adminseg {
         status: 'homologated',
         createdAt: moment().format('YYYY-MM-DD HH:mm'),
         application: {
+          /* owner_signature: {
+            accept: 1
+          }, */
           person: {
             first_name: names.first_name,
             last_name: names.last_name,
@@ -258,9 +261,15 @@ class Adminseg {
       );
   
       let homologation = [];
-  
-      for (let question of questionsFiltered) {
-        const questionHomologateResult = this.homologateQuestion(question);
+
+      for (let homologationObject of params.homolgationQuestions) {
+        const question = questionsFiltered.find(question => {
+          return question.id === homologationObject.id
+        });
+
+        if (!question) continue;
+
+        const questionHomologateResult = this.homologateQuestion(question, homologationObject);
         const newArray = homologation.concat(questionHomologateResult);
         homologation = newArray;
       }
@@ -269,9 +278,14 @@ class Adminseg {
         (question) => question !== undefined && question,
       );
 
-      questionWithoutUndefined.push({
-        question: 439,
-      });
+      questionWithoutUndefined.push(
+        {
+          question: 439,
+        }, 
+        {
+          questions: 496
+        }
+      );
 
       return questionWithoutUndefined;
     }
@@ -293,8 +307,8 @@ class Adminseg {
       return questions;
     }
   
-    homologateQuestion(appQuestion) {
-      const homologation = params.homolgationQuestions[appQuestion.id];
+    homologateQuestion(appQuestion, homologation) {
+      //const homologation = params.homolgationQuestions[appQuestion.id];
       if (!homologation) return null;
   
       let result = [];
