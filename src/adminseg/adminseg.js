@@ -267,11 +267,22 @@ class Adminseg {
           return question.id === homologationObject.id
         });
 
-        if (!question) continue;
-
-        const questionHomologateResult = this.homologateQuestion(question, homologationObject);
+        let questionHomologateResult;
+        
+        if (question) {
+          questionHomologateResult = this.homologateQuestion(question, homologationObject);
+        }else{
+          questionHomologateResult = homologationObject.questions.map(q => {
+            return {
+              question: q.id
+            }
+          })
+        };
+        
+        
         const newArray = homologation.concat(questionHomologateResult);
         homologation = newArray;
+        
       }
   
       const questionWithoutUndefined = homologation.filter(
@@ -379,7 +390,9 @@ class Adminseg {
             !this.application.insurances ||
             !this.application.insurances.acquired
           )
-            return;
+            return {
+              question: homologationQuestionObject.id,
+            };
           const insurances = this.application.insurances.acquired.map(
             (insurance) => ({
               company_name: insurance.companyName,
@@ -394,7 +407,9 @@ class Adminseg {
             insurances,
           };
         case 'doctor':
-          if (!this.application.doctors) return;
+          if (!this.application.doctors) return {
+            question: homologationQuestionObject.id,
+          };
           const doctors = this.application.doctors.map((doctor) => ({
             name: doctor.name,
             address: doctor.email ? doctor.email : null,
@@ -406,7 +421,9 @@ class Adminseg {
             doctors,
           };
         case 'medicine':
-          if (!this.application.medicines) return;
+          if (!this.application.medicines) return {
+            question: homologationQuestionObject.id,
+          };
           const medicines = this.application.medicines.map((medicine) => ({
             name: medicine.name,
             dosage: medicine.dosage,
@@ -418,26 +435,34 @@ class Adminseg {
           };
         case 'insurance_denied_type':
           if (!this.application.insurances || !this.application.insurances.denied)
-            return;
+            return {
+              question: homologationQuestionObject.id,
+            };
           return {
             question: homologationQuestionObject.id,
             choice: this.application.insurances.denied[0].type,
           };
         case 'insurance_denied_text':
           if (!this.application.insurances || !this.application.insurances.denied)
-            return;
+            return {
+              question: homologationQuestionObject.id,
+            };
           return {
             question: homologationQuestionObject.id,
             answer_text: this.application.insurances.denied[0].details,
           };
         case 'covid-date':
-          if (!this.application.covid) return;
+          if (!this.application.covid) return {
+            question: homologationQuestionObject.id,
+          };
           return {
             question: homologationQuestionObject.id,
             date: moment(this.application.covid[0].testDate).format('YYYY-MM-DD'),
           };
         case 'covid-bool':
-          if (!this.application.covid) return;
+          if (!this.application.covid) return {
+            question: homologationQuestionObject.id,
+          };
           return {
             question: homologationQuestionObject.id,
             answer_bool: this.application.covid[0].currentlySymptoms ? 1 : 0,
