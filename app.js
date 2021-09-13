@@ -30,7 +30,7 @@ app.post('/adminseg/homologation', async (req, res) => {
     const adminseg = new Adminseg.Adminseg(req.body.applicationData);
     const homologationObject = await adminseg.homologationObject();
 
-    /* const quotationRequestCopy = JSON.stringify(homologationObject.quotationRequest);
+    const quotationRequestCopy = JSON.stringify(homologationObject.quotationRequest);
 
     const quotationResult = await fetch(`${process.env.ADMINSEG_URL_API}/quote/results`, {
       method: 'POST',
@@ -58,12 +58,7 @@ app.post('/adminseg/homologation', async (req, res) => {
     homologationObject.quotationRequest = JSON.parse(quotationRequestCopy);
     homologationObject.submitRequest = JSON.parse(submitRequestCopy);
 
-    res.status(200).json(submitResponse); */
-
-    /* res.status(200).json({
-      length: homologationObject.application.answers.length,
-      answers: homologationObject.application.answers
-    }); */
+    //res.status(200).json(submitResponse);
 
     res.status(200).json(homologationObject);
   } catch (error) {

@@ -292,9 +292,6 @@ class Adminseg {
       questionWithoutUndefined.push(
         {
           question: 439,
-        }, 
-        {
-          questions: 496
         }
       );
 
@@ -479,6 +476,12 @@ class Adminseg {
         case 'detail_text':
           return {
             question: homologationQuestionObject.id,
+            answer_text: appQuestion.detail ? appQuestion.detail[0].Details : null,
+          };
+        case 'bool_text':
+          return {
+            question: homologationQuestionObject.id,
+            answer_bool: userResponse,
             answer_text: appQuestion.detail ? appQuestion.detail[0].Details : null,
           };
       }

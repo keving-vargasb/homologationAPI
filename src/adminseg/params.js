@@ -694,12 +694,7 @@
      questions: [
       {
         id: 504,
-        type: 'bool',
-        options: null,
-      },
-      {
-        id: 504,
-        type: 'detail_text',
+        type: 'bool_text',
         options: null,
       },
     ],
