@@ -1,5 +1,5 @@
 const params = require('./params');
-const utils = require('../util/util');
+const utils = require('../util');
 const moment = require('moment');
 const fetch = require('node-fetch');
 
