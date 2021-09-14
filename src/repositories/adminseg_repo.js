@@ -3,16 +3,13 @@ const HttpResponse = require("../util/http_response");
 const utils = require('../util/util');
 
 const AdminsegProvider = require("../providers/adminseg_provider");
+const VtioApiProvider = require("../providers/vtio_api_provider");
 
 const getHomologationObject = async (applicationID) => {
   try {
 
-    const applicationDataResponse = await utils.fetchGET({
-      url: `${process.env.API_ENDPOINT}/api/application/${applicationID}`
-    });
-
-    const applicationData = applicationDataResponse.data
-
+    const applicationDataResponse = await VtioApiProvider.getApplicationData(applicationID);
+    const applicationData = applicationDataResponse.data;
     if(!applicationData) return new HttpResponse("application_not_found", 200, "Application not found", applicationID);
 
     const adminseg = new Adminseg.Adminseg(applicationData);
@@ -21,6 +18,34 @@ const getHomologationObject = async (applicationID) => {
     return new HttpResponse("ok", 200, "ok", homologationObject);
   } catch (error) {
     console.log({ error });
+    return new HttpResponse("unknown_error", 200, error.message, error);
+  }
+}
+
+const initHomologationProcess = async (applicationID) => {
+  try {
+    const applicationDataResponse = await VtioApiProvider.getApplicationData(applicationID);
+    const applicationData = applicationDataResponse.data;
+    if(!applicationData) return new HttpResponse("application_not_found", 200, "Application not found", applicationID);
+
+    const adminseg = new Adminseg.Adminseg(applicationData);
+    const homologationObject = await adminseg.homologationObject();
+
+    const response = await VtioApiProvider.registerHomologationObject(homologationObject);
+
+    await VtioApiProvider.updateApplication({
+      homologationStatus: 'homologated'
+    }, applicationID);
+
+    return new HttpResponse("ok", 200, "ok", response);
+  } catch (error) {
+    console.log({ error });
+
+    await VtioApiProvider.updateApplication({
+      homologationStatus: 'with_error',
+      homologationError: error
+    }, applicationID);
+
     return new HttpResponse("unknown_error", 200, error.message, error);
   }
 }
@@ -49,5 +74,6 @@ const createQuoteInAdminseg = async (applicationData) => {
 
 module.exports = {
   getHomologationObject,
+  initHomologationProcess,
   createQuoteInAdminseg,
 };

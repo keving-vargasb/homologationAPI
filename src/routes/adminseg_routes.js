@@ -8,6 +8,12 @@ module.exports = function (app) {
     res.status(result.httpCode).json(result);
   });
 
+  app.get("/adminseg/homologation/process/:applicationID", async (req, res) => {
+    const { applicationID } = req.params;
+    const result = await AdminsegRepo.initHomologationProcess(applicationID);
+    res.status(result.httpCode).json(result);
+  });
+
   //ONLY DEV
   app.post("/adminseg/homologation", async (req, res) => {
     const { applicationData } = req.body;
