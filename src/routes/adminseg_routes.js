@@ -23,10 +23,19 @@ module.exports = function (app) {
     res.status(result.httpCode).json(result);
   });
 
+
+  //Cron to submit applications
+  app.get("/adminseg/homologation/cron", async (req, res) => {
+    const result = await AdminsegRepo.submitApplicationsInAdminseg();
+    res.status(result.httpCode).json(result);
+  });
+
   //submit application to debug object ONLY DEV
   app.post("/adminseg/homologation", async (req, res) => {
     const { applicationData } = req.body;
     const result = await AdminsegRepo.createQuoteInAdminseg(applicationData);
     res.status(result.httpCode).json(result);
   });
+
+  
 };

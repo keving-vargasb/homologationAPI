@@ -172,6 +172,35 @@ const submitApplicationInAdminseg = async (applicationID) => {
   }
 };
 
+const submitApplicationsInAdminseg = async () => {
+  try {
+    
+    let processResult = {
+      success: [],
+      failed: []
+    };
+
+    const homologationObjects = await VtioApiProvider.getHomologationObjects({
+      status: 'pending'
+    });
+
+    for await(let object of homologationObjects) {
+        const result = await submitApplicationInAdminseg(object.applicationID);
+        if(!result.code === 'ok') {
+          processResult.failed.push(object.applicationID);
+          continue;
+        } 
+
+        processResult.success.push(object.applicationID);
+    }
+
+    return new HttpResponse("ok", 200, "ok", processResult);
+  } catch (error) {
+    console.log({ error });
+    return new HttpResponse("unknown_error", 200, error.message, error);
+  }
+};
+
 //Only dev
 const createQuoteInAdminseg = async (applicationData) => {
   try {
@@ -210,4 +239,5 @@ module.exports = {
   registerNewHomologation,
   createQuoteInAdminseg,
   submitApplicationInAdminseg,
+  submitApplicationsInAdminseg
 };
