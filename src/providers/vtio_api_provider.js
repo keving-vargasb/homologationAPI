@@ -9,7 +9,7 @@ const getApplicationData = async (applicationID) => {
     url: `${process.env.API_ENDPOINT}/api/application/${applicationID}`,
   });
 
-  return applicationData;
+  return applicationData.data;
 };
 
 const registerHomologationObject = async (homologationObject) => {
@@ -48,9 +48,32 @@ const getHomologationObjects = async (jsonFilter) => {
   return response.data;
 };
 
+const getHomologationObjectByApplicationID = async (applicationID) => {
+  const response = await utils.fetchGET({
+    url: `${process.env.API_ENDPOINT}/api/adminseg/application/${applicationID}`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) throw new Error(response.error);
+  return response.data;
+};
+
+const updateHomologationObject = async (data, objectID) => {
+  const response = await utils.fetchPOST({
+    url: `${process.env.API_ENDPOINT}/api/adminseg/${objectID}`,
+    data: JSON.stringify(data),
+    headers,
+  });
+  if (!response.ok) throw new Error(response.error);
+  return response;
+};
+
 module.exports = {
   getApplicationData,
   registerHomologationObject,
   updateApplication,
-  getHomologationObjects
+  getHomologationObjects,
+  getHomologationObjectByApplicationID,
+  updateHomologationObject
 };
