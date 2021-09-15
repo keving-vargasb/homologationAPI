@@ -36,9 +36,18 @@ async function fetchPOST({ url, data, headers }) {
   return response;
 }
 
-async function fetchGET({ url, headers }) {
+async function fetchGET({ url, headers, queryParams}) {
+
+  let finalUrl = url;
+  let params = null;
+
+  if(queryParams) {
+    params = new URLSearchParams(queryParams);
+    finalUrl = `${finalUrl}?${params}`;
+  }
+
   const serviceResult = await fetch(
-    url,
+    finalUrl,
     {
       method: "GET",
       headers,

@@ -36,8 +36,6 @@ class Adminseg {
   
       let resultObject = {
         applicationID: this.application.id,
-        status: 'homologated',
-        createdAt: moment().format('YYYY-MM-DD HH:mm'),
         application: {
           /* owner_signature: {
             accept: 1
