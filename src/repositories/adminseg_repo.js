@@ -55,15 +55,6 @@ const registerNewHomologation = async (applicationID) => {
     return new HttpResponse("ok", 200, "ok", response.data);
   } catch (error) {
     console.log({ error });
-
-    await VtioApiProvider.updateApplication(
-      {
-        adminsegProcess: "with_error",
-        adminsegError: error,
-      },
-      applicationID
-    );
-
     return new HttpResponse("unknown_error", 200, error.message, error);
   }
 };
