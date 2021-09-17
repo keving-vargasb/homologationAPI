@@ -210,11 +210,11 @@ class Adminseg {
             beneficiary.type.id,
             params.adminsegbeneficiaryTypes,
           ).value,
-          category: this.findAdminsegItem(
+          category: (personType === 'rp') ? this.findAdminsegItem(
             params.entities.relationship,
             beneficiary.relationship.id,
             params.adminsegRelationships,
-          ).value,
+          ).value : null,
           percentage: beneficiary.percent,
           reason: beneficiary.reason ? beneficiary.reason : null,
           details: beneficiary.details ? beneficiary.details : null,

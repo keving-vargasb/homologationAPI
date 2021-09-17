@@ -85,6 +85,9 @@ const doAdminsegProcess = async (applicationData) => {
     return processResult;
   }
 
+  processResult.status = "quoted";
+  processResult.quoteResponse = quotationResponse ? quotationResponse : null;
+
   homologationObject.submitRequest.append(
     "application[quotation][uuid]",
     quotationResponse.quote.uuid
